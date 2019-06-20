@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="affc121f-367b-4f3e-86b0-e1d8cf9b5501" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/helloworld/resources/HelloWorldResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/helloworld/resources/HelloWorldResource.java" afterDir="false" />
-    </list>
+    <list default="true" id="affc121f-367b-4f3e-86b0-e1d8cf9b5501" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/helloworld/resources/HelloWorldResource.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="29" column="75" lean-forward="true" selection-start-line="29" selection-start-column="75" selection-end-line="29" selection-end-column="75" />
+              <caret line="29" column="75" selection-start-line="29" selection-start-column="75" selection-end-line="29" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -136,6 +134,43 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.HelloWorldApplication">
+    <configuration name="HelloWorldApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.helloworld.HelloWorldApplication" />
+      <module name="dropwizard-helloworld" />
+      <option name="PROGRAM_PARAMETERS" value="server hello-world.yml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.helloworld.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dropwizard-helloworld []" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.HelloWorldApplication" />
       <item itemvalue="Maven.dropwizard-helloworld []" />
@@ -210,7 +245,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/helloworld/resources/HelloWorldResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="29" column="75" lean-forward="true" selection-start-line="29" selection-start-column="75" selection-end-line="29" selection-end-column="75" />
+          <caret line="29" column="75" selection-start-line="29" selection-start-column="75" selection-end-line="29" selection-end-column="75" />
         </state>
       </provider>
     </entry>
