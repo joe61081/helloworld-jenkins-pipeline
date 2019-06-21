@@ -28,7 +28,6 @@ public class HelloWorldResource {
     @Timed
     public Saying sayHello(@QueryParam("name") Optional<String> name) {
         final String value = String.format(template, name.or(defaultName));
-        System.out.println("Hotfix Change");
         return new Saying(counter.incrementAndGet(), value);
     }
 }
