@@ -5,15 +5,11 @@ pipeline{
 	triggers {
         githubPush()
     }
-	tools {
-		maven 'apache-maven-3.6.1'
-		jdk 'jdk8'
-	}
 	agent any
 	stages{
-		stage('develop release'){
+		stage('master'){
 			when{
-				branch "develop release*"
+				branch "master*"
 			}
 			steps{
 				scm {
