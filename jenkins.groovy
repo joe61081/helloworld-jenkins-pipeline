@@ -12,10 +12,8 @@ pipeline{
 				scm {
 					git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git',credentialsId:'joe-github-ssh-token')
     			}
-				maven{
-					mavenInstallation('Maven 3.6.1')
-				}
-				maven('verify')
+				mavenInstallation('Maven 3.6.1')
+				maven('verify', 'pom.xml')
 				runmvn()
 			}
 
