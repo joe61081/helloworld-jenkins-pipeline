@@ -12,7 +12,7 @@ pipeline{
 				scm {
 					git{
 						remote{
-							github('git@github.com:joe61081/helloworld-jenkins-pipeline.git')
+							url('git@github.com:joe61081/helloworld-jenkins-pipeline.git')
 							credentials('joe-github-ssh-token')
 						}
 					}
