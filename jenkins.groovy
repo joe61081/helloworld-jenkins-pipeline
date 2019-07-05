@@ -7,11 +7,8 @@ pipeline{
     }
 	agent any
 	stages{
-		stage('Build'){
+		stage('master'){
 			steps{
-				scm {
-					git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git',credentialsId:'joe-github-ssh-token')
-    			}
 				withMaven() {
 					runmvn();
 				}
