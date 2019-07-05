@@ -10,7 +10,12 @@ pipeline{
 		stage('master'){
 			steps{
 				scm {
-					git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git',credentialsId:'joe-github-ssh-token')
+					git{
+						remote{
+							github('git@github.com:joe61081/helloworld-jenkins-pipeline.git')
+							credentials('joe-github-ssh-token')
+						}
+					}
 				}
 				runmvn();
 			}
