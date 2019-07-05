@@ -5,6 +5,10 @@ pipeline{
 	triggers {
         githubPush()
     }
+	tools {
+		maven 'Maven 3.6.1'
+		jdk 'jdk8'
+	}
 	agent any
 	stages{
 		stage('develop release'){
@@ -77,5 +81,6 @@ pipeline{
 }
 
 void runmvn(){
+	sh 'mvn install'
 	sh 'mvn run'
 }
