@@ -12,20 +12,9 @@ pipeline{
 				scm {
 					git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git',credentialsId:'joe-github-ssh-token')
     			}
-				withMaven(
-						// Maven installation declared in the Jenkins "Global Tool Configuration"
-						maven: 'maven-3.6.1',
-						// Maven settings.xml file defined with the Jenkins Config File Provider Plugin
-						// We recommend to define Maven settings.xml globally at the folder level using
-						// navigating to the folder configuration in the section "Pipeline Maven Configuration / Override global Maven configuration"
-						// or globally to the entire master navigating to  "Manage Jenkins / Global Tools Configuration"
-						mavenSettingsConfig: 'pom.xml') {
-
-					// Run the maven build
-					sh "mvn clean verify"
-
+				withMaven() {
+					runmvn();
 				}
-				runmvn();
 			}
 
 		}
@@ -87,7 +76,6 @@ pipeline{
 }
 
 void runmvn(){
-	readMavenPom file: 'pom.xml'
 	sh 'mvn install'
 	sh 'mvn run'
 }
