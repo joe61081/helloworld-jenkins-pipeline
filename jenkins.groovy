@@ -3,35 +3,20 @@ pipeline{
 		buildDiscarder(logRotator(numToKeepStr: '2', artifactNumToKeepStr: '2'))
 	}
 	triggers {
-        githubPush()
-    }
+		githubPush()
+	}
 	agent any
 	stages{
-		stage('develop release'){
-			when{
-				branch "develop release*"
-			}
+		stage('master'){
 			steps{
 				scm {
 					git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git',credentialsId:'joe-github-ssh-token')
-    			}
-				runmvn();
-			}
-
-		}
-		stage('feature'){
-			when{
-				branch "feature*"
-			}
-			steps{
+				}
 				runmvn();
 			}
 
 		}
 		stage('DEV'){
-			when{
-				tag "dev-*"
-			}
 			steps{
 				runmvn();
 			}
