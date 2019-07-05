@@ -12,7 +12,7 @@ pipeline{
 				scm {
 					git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git',credentialsId:'joe-github-ssh-token')
     			}
-				runmvn()
+				runmvn();
 			}
 
 		}
@@ -21,7 +21,7 @@ pipeline{
 				branch "feature*"
 			}
 			steps{
-				runmvn()
+				runmvn();
 			}
 
 		}
@@ -30,7 +30,7 @@ pipeline{
 				tag "dev-*"
 			}
 			steps{
-				runmvn()
+				runmvn();
 			}
 		}
 		stage('SIT'){
@@ -38,7 +38,7 @@ pipeline{
 				tag "sit-*"
 			}
 			steps{
-				runmvn()
+				runmvn();
 			}
 
 		}
@@ -47,7 +47,7 @@ pipeline{
 				tag "uat-*"
 			}
 			steps{
-				runmvn()
+				runmvn();
 			}
 
 		}
