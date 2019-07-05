@@ -5,13 +5,13 @@ pipeline{
 	triggers {
         githubPush()
     }
-	scm {
-		git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git',credentialsId:'joe-github-ssh-token')
-	}
 	agent any
 	stages{
 		stage('master'){
 			steps{
+				scm {
+					git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git',credentialsId:'joe-github-ssh-token')
+    			}
 				sh 'mvn install'
 				sh 'mvn run'
 			}
