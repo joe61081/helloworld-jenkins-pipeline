@@ -6,8 +6,8 @@ pipeline{
         githubPush()
     }
 	tools {
-		maven 'Maven 3.6.1'
-		jdk '8-jdk'
+		maven 'apache-maven-3.6.1'
+		jdk 'jdk8'
 	}
 	agent any
 	stages{
