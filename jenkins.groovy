@@ -7,7 +7,7 @@ pipeline{
     }
 	agent any
 	stages{
-		stage('master'){
+		stage('Build'){
 			steps{
 				scm {
 					git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git',credentialsId:'joe-github-ssh-token')
