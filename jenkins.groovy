@@ -1,79 +1,79 @@
-pipeline{
-	options {
-		buildDiscarder(logRotator(numToKeepStr: '2', artifactNumToKeepStr: '2'))
-	}
-	triggers {
-        githubPush()
-    }
-	agent any
-	stages{
-		stage('master'){
-			steps{
-				scm {
-					git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git',credentialsId:'joe-github-ssh-token')
-    			}
-				maven('verify', 'pom.xml')
-				maven {
+pipeline {
+	mavenJob() {
+		options {
+			buildDiscarder(logRotator(numToKeepStr: '2', artifactNumToKeepStr: '2'))
+		}
+		triggers {
+			githubPush()
+		}
+		agent any
+		stages {
+			stage('master') {
+				steps {
+					scm {
+						git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git', credentialsId: 'joe-github-ssh-token')
+					}
+					maven('verify', 'pom.xml')
 					mavenInstallation('Maven 3.6.1')
+					runmvn()
 				}
-				runmvn()
+
+			}
+			stage('feature') {
+				when {
+					branch "feature*"
+				}
+				steps {
+					runmvn()
+				}
+
+			}
+			stage('DEV') {
+				when {
+					tag "dev-*"
+				}
+				steps {
+					runmvn()
+				}
+			}
+			stage('SIT') {
+				when {
+					tag "sit-*"
+				}
+				steps {
+					runmvn()
+				}
+
+			}
+			stage('UAT') {
+				when {
+					tag "uat-*"
+				}
+				steps {
+					runmvn()
+				}
+
+			}
+			stage('PRE') {
+				when {
+					tag "pre-*"
+				}
+				steps {
+					runmvn();
+				}
+
+			}
+			stage('PRD') {
+				when {
+					tag "prd-*"
+				}
+				steps {
+					runmvn();
+				}
+
 			}
 
 		}
-		stage('feature'){
-			when{
-				branch "feature*"
-			}
-			steps{
-				runmvn()
-			}
-
-		}
-		stage('DEV'){
-			when{
-				tag "dev-*"
-			}
-			steps{
-				runmvn()
-			}
-		}
-		stage('SIT'){
-			when{
-				tag "sit-*"
-			}
-			steps{
-				runmvn()
-			}
-
-		}
-		stage('UAT'){
-			when{
-				tag "uat-*"
-			}
-			steps{
-				runmvn()
-			}
-
-		}
-		stage('PRE'){
-			when{
-				tag "pre-*"
-			}
-			steps{
-				runmvn();
-			}
-
-		}
-		stage('PRD'){
-			when{
-				tag "prd-*"
-			}
-			steps{
-				runmvn();
-			}
-
-		}
-
 	}
 }
 
