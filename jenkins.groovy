@@ -12,9 +12,7 @@ pipeline{
 				scm {
 					git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git',credentialsId:'joe-github-ssh-token')
     			}
-				sh 'mvn clean verify'
-				sh 'mvn install'
-				sh 'mvn run'
+				runmvn()
 			}
 
 		}
@@ -76,7 +74,6 @@ pipeline{
 }
 
 void runmvn(){
-	sh 'mvn clean verify'
 	sh 'mvn install'
 	sh 'mvn run'
 }
