@@ -12,40 +12,29 @@ pipeline{
 				scm {
 					git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git',credentialsId:'joe-github-ssh-token')
     			}
+				sh 'mvn --version'
 				runmvn();
 			}
 
 		}
 		stage('feature'){
-			when{
-				branch "feature*"
-			}
 			steps{
 				runmvn();
 			}
 
 		}
 		stage('DEV'){
-			when{
-				tag "dev-*"
-			}
 			steps{
 				runmvn();
 			}
 		}
 		stage('SIT'){
-			when{
-				tag "sit-*"
-			}
 			steps{
 				runmvn();
 			}
 
 		}
 		stage('UAT'){
-			when{
-				tag "uat-*"
-			}
 			steps{
 				runmvn();
 			}
@@ -61,9 +50,6 @@ pipeline{
 
 		}
 		stage('PRD'){
-			when{
-				tag "prd-*"
-			}
 			steps{
 				runmvn();
 			}
@@ -74,6 +60,7 @@ pipeline{
 }
 
 void runmvn(){
+	readMavenPom file: 'pom.xml'
 	sh 'mvn install'
 	sh 'mvn run'
 }
