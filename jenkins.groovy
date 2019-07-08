@@ -14,7 +14,8 @@ pipeline {
 			}
 			steps {
 				script {
-					sh "echo 'Hello World'"
+					sh "echo 'Deploying...'"
+					sh 'printenv'
 					sh 'mvn install'
 					sh 'mvn verify'
 
