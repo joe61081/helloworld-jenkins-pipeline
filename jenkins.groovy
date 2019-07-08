@@ -9,6 +9,9 @@ pipeline {
 
 	stages {
 		stage('Deploy') {
+			when{
+				branch "master"
+			}
 			steps {
 				script {
 					sh "echo 'Hello World'"
