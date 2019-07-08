@@ -10,7 +10,7 @@ pipeline {
 	stages {
 		stage('Deploy') {
 			when{
-				branch 'origin/master'
+				expression {env.GIT_BRANCH == 'origin/master'}
 			}
 			steps {
 				script {
@@ -30,6 +30,21 @@ pipeline {
 			steps {
 				script {
 					sh "echo 'Release...'"
+					sh 'printenv.GIT_BRANCH'
+					sh 'mvn install'
+					sh 'mvn verify'
+
+				}
+
+			}
+		}
+		stage('Feature') {
+			when{
+				expression {env.GIT_BRANCH == 'origin/feature*'}
+			}
+			steps {
+				script {
+					sh "echo 'Feature...'"
 					sh 'printenv.GIT_BRANCH'
 					sh 'mvn install'
 					sh 'mvn verify'
