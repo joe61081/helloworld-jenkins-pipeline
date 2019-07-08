@@ -1,7 +1,7 @@
 pipeline {
 	agent {
-		node { label 'docker-slave-cluster' }
-	}
+		node { label 'docker-slave-cluster'
+
 	options { buildDiscarder(logRotator(numToKeepStr: '2', artifactNumToKeepStr: '2')) }
 	triggers {
 		githubPush()
@@ -9,8 +9,8 @@ pipeline {
 
 	stages {
 		stage('Deploy') {
-			when{
-				branch 'master'
+			when {
+				branch "master"
 			}
 			steps {
 				script {
@@ -19,7 +19,8 @@ pipeline {
 					sh 'mvn verify'
 
 				}
-
+			}
+		}
 			}
 		}
 	}
