@@ -1,76 +1,28 @@
-pipeline{
-	options {
-		buildDiscarder(logRotator(numToKeepStr: '2', artifactNumToKeepStr: '2'))
+pipeline {
+	agent {
+		node { label 'docker-slave-cluster' }
 	}
-	triggers {
-        githubPush()
-    }
-	agent any
-	tools{
-		maven 'maven-3.6.1'
+	options { buildDiscarder(logRotator(numToKeepStr: '2', artifactNumToKeepStr: '2')) }
+
+
+	stages {
+		stage('Running unit & integration test') {
+			steps {
+				echo 'Testing..'
+				script {
+
+				}
+			}
+		}
+		stage('Deploy') {
+			steps {
+
+				script {
+					sh "echo 'Hello World'"
+
+				}
+
+			}
+		}
 	}
-	stages{
-		stage('master'){
-			steps{
-				scm {
-					git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git',credentialsId:'joe-github-ssh-token')
-    			}
-				runmvn();
-			}
-
-		}
-		stage('feature'){
-			steps{
-				runmvn();
-			}
-
-		}
-		stage('DEV'){
-			steps{
-				runmvn();
-			}
-		}
-		stage('SIT'){
-			when{
-				tag "sit-*"
-			}
-			steps{
-				runmvn();
-			}
-
-		}
-		stage('UAT'){
-			when{
-				tag "uat-*"
-			}
-			steps{
-				runmvn();
-			}
-
-		}
-		stage('PRE'){
-			when{
-				tag "pre-*"
-			}
-			steps{
-				runmvn();
-			}
-
-		}
-		stage('PRD'){
-			when{
-				tag "prd-*"
-			}
-			steps{
-				runmvn();
-			}
-
-		}
-
-	}
-}
-
-void runmvn(){
-	sh 'mvn install'
-	sh 'mvn run'
 }
