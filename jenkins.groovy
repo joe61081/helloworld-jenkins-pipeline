@@ -10,7 +10,7 @@ pipeline {
 				script {
 					sh "echo 'Hello World'"
 					sh 'mvn install'
-					sh 'mvn build'
+					sh 'mvn verify'
 
 				}
 
