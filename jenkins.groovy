@@ -6,14 +6,6 @@ pipeline {
 
 
 	stages {
-		stage('Running unit & integration test') {
-			steps {
-				echo 'Testing..'
-				script {
-
-				}
-			}
-		}
 		stage('Deploy') {
 			steps {
 
