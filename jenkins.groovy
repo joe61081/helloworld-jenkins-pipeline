@@ -6,12 +6,16 @@ pipeline{
         githubPush()
     }
 	agent any
+	tools{
+		maven 'apache-maven-3.6.1'
+	}
 	stages{
 		stage('master'){
 			steps{
-				withMaven() {
-					runmvn();
-				}
+				scm {
+					git(url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git',credentialsId:'joe-github-ssh-token')
+    			}
+				runmvn();
 			}
 
 		}
