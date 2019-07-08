@@ -20,18 +20,12 @@ pipeline{
 
 		}
 		stage('feature'){
-			when{
-				branch "feature*"
-			}
 			steps{
 				runmvn();
 			}
 
 		}
 		stage('DEV'){
-			when{
-				tag "dev-*"
-			}
 			steps{
 				runmvn();
 			}
