@@ -15,7 +15,6 @@ pipeline {
 			steps {
 				script {
 					sh "echo 'Deploying Master...'"
-					sh 'printenv.GIT_BRANCH'
 					sh 'mvn install'
 					sh 'mvn verify'
 
@@ -30,7 +29,6 @@ pipeline {
 			steps {
 				script {
 					sh "echo 'Release...'"
-					sh 'printenv.GIT_BRANCH'
 					sh 'mvn install'
 					sh 'mvn verify'
 
@@ -45,7 +43,75 @@ pipeline {
 			steps {
 				script {
 					sh "echo 'Feature...'"
-					sh 'printenv.GIT_BRANCH'
+					sh 'mvn install'
+					sh 'mvn verify'
+
+				}
+
+			}
+		}
+		stage('Develop') {
+			when{
+				expression {env.GIT_BRANCH == 'origin/dev-*'}
+			}
+			steps {
+				script {
+					sh "echo 'Develop...'"
+					sh 'mvn install'
+					sh 'mvn verify'
+
+				}
+
+			}
+		}
+		stage('SIT') {
+			when{
+				expression {env.GIT_BRANCH == 'origin/sit-*'}
+			}
+			steps {
+				script {
+					sh "echo 'SIT...'"
+					sh 'mvn install'
+					sh 'mvn verify'
+				}
+
+			}
+		}
+		stage('UAT') {
+			when{
+				expression {env.GIT_BRANCH == 'origin/uat-*'}
+			}
+			steps {
+				script {
+					sh "echo 'UAT...'"
+					sh 'mvn install'
+					sh 'mvn verify'
+
+				}
+
+			}
+		}
+		stage('PRE') {
+			when{
+				expression {env.GIT_BRANCH == 'origin/pre-*'}
+			}
+			steps {
+				script {
+					sh "echo 'Feature...'"
+					sh 'mvn install'
+					sh 'mvn verify'
+
+				}
+
+			}
+		}
+		stage('PRD') {
+			when{
+				expression {env.GIT_BRANCH == 'origin/prd-*'}
+			}
+			steps {
+				script {
+					sh "echo 'PRD...'"
 					sh 'mvn install'
 					sh 'mvn verify'
 
