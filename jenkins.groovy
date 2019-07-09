@@ -38,7 +38,7 @@ pipeline {
 		}
 		stage('Feature') {
 			when{
-				expression {env.GIT_BRANCH == '^origin/feature'}
+				branch '^feature*'
 			}
 			steps {
 				script {
