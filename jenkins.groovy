@@ -37,12 +37,11 @@ pipeline {
 			}
 		}
 		stage('Feature') {
-			checkout([$class: 'GitSCM', branches: [[name: 'feature*']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'joe-github-ssh-token', url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git']]])
-
 			when{
 				expression {env.GIT_BRANCH == 'origin/feature*'}
 			}
 			steps {
+				checkout([$class: 'GitSCM', branches: [[name: 'feature*']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'joe-github-ssh-token', url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git']]])
 				script {
 					sh "echo 'Feature...'"
 					sh 'mvn install'
