@@ -9,11 +9,11 @@ pipeline {
 
 	stages {
 		stage('Deploy') {
-			checkout([$class: 'GitSCM', branches: [[name: '**']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'joe-github-ssh-token', url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git']]])
 			when{
 				expression {env.GIT_BRANCH == 'origin/master'}
 			}
 			steps {
+				checkout([$class: 'GitSCM', branches: [[name: '**']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'joe-github-ssh-token', url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git']]])
 				script {
 					sh "echo 'Deploying Master...'"
 					sh 'mvn install'
