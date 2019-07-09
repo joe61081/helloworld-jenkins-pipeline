@@ -34,7 +34,6 @@ pipeline {
 				script {
 					sh "echo 'Release...'"
 					sh 'mvn install'
-					sh 'mvn verify'
 
 				}
 
@@ -42,13 +41,12 @@ pipeline {
 		}
 		stage('Feature') {
 			when{
-				branch 'feature*'
+				expression {env.GIT_BRANCH == 'origin/feature*'}
 			}
 			steps {
 				script {
 					sh "echo 'Feature...'"
 					sh 'mvn install'
-					sh 'printenv'
 
 				}
 
@@ -62,7 +60,6 @@ pipeline {
 				script {
 					sh "echo 'Develop...'"
 					sh 'mvn install'
-					sh 'mvn verify'
 
 				}
 
@@ -76,7 +73,6 @@ pipeline {
 				script {
 					sh "echo 'SIT...'"
 					sh 'mvn install'
-					sh 'mvn verify'
 				}
 
 			}
@@ -89,7 +85,6 @@ pipeline {
 				script {
 					sh "echo 'UAT...'"
 					sh 'mvn install'
-					sh 'mvn verify'
 
 				}
 
@@ -103,7 +98,6 @@ pipeline {
 				script {
 					sh "echo 'Feature...'"
 					sh 'mvn install'
-					sh 'mvn verify'
 
 				}
 
@@ -117,7 +111,6 @@ pipeline {
 				script {
 					sh "echo 'PRD...'"
 					sh 'mvn install'
-					sh 'mvn verify'
 
 				}
 
