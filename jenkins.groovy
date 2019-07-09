@@ -21,9 +21,9 @@ pipeline {
 
 			}
 		}
-		stage('Release') {
+		stage('Develop Release') {
 			when{
-				branch 'develop'
+				branch 'release*'
 			}
 			steps {
 				script {
@@ -49,7 +49,7 @@ pipeline {
 		}
 		stage('Develop') {
 			when{
-				expression {env.GIT_BRANCH == 'origin/dev-*'}
+				tag 'dev-*'
 			}
 			steps {
 				script {
@@ -62,7 +62,7 @@ pipeline {
 		}
 		stage('SIT') {
 			when{
-				expression {env.GIT_BRANCH == 'origin/sit-*'}
+				tag 'sit-*'
 			}
 			steps {
 				script {
@@ -74,7 +74,7 @@ pipeline {
 		}
 		stage('UAT') {
 			when{
-				expression {env.GIT_BRANCH == 'origin/uat-*'}
+				tag 'uat-*'
 			}
 			steps {
 				script {
@@ -87,11 +87,11 @@ pipeline {
 		}
 		stage('PRE') {
 			when{
-				expression {env.GIT_BRANCH == 'origin/pre-*'}
+				tag 'pre-*'
 			}
 			steps {
 				script {
-					sh "echo 'Feature...'"
+					sh "echo 'PRE...'"
 					sh 'mvn install'
 
 				}
@@ -100,7 +100,7 @@ pipeline {
 		}
 		stage('PRD') {
 			when{
-				expression {env.GIT_BRANCH == 'origin/prd-*'}
+				tag 'prd-*'
 			}
 			steps {
 				script {
