@@ -10,10 +10,9 @@ pipeline {
 	stages {
 		stage('Deploy') {
 			when{
-				expression {env.GIT_BRANCH == 'origin/master'}
+				branch 'master'
 			}
 			steps {
-				checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'joe-github-ssh-token', url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git']]])
 				script {
 					sh "echo 'Deploying Master...'"
 					sh 'mvn install'
@@ -24,10 +23,9 @@ pipeline {
 		}
 		stage('Release') {
 			when{
-				expression {env.GIT_BRANCH == 'origin/develop'}
+				branch 'develop'
 			}
 			steps {
-				checkout([$class: 'GitSCM', branches: [[name: 'develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'joe-github-ssh-token', url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git']]])
 				script {
 					sh "echo 'Release...'"
 					sh 'mvn install'
@@ -38,10 +36,9 @@ pipeline {
 		}
 		stage('Feature') {
 			when{
-				expression {env.GIT_BRANCH == 'origin/feature*'}
+				branch 'feature*'
 			}
 			steps {
-				checkout([$class: 'GitSCM', branches: [[name: 'feature*']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'joe-github-ssh-token', url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git']]])
 				script {
 					sh "echo 'Feature...'"
 					sh 'mvn install'
