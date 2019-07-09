@@ -23,7 +23,7 @@ pipeline {
 		}
 		stage('Develop Release') {
 			when{
-				branch 'release/*'
+				branch 'release*'
 			}
 			steps {
 				script {
@@ -36,7 +36,7 @@ pipeline {
 		}
 		stage('Feature') {
 			when{
-				branch 'feature*'
+				branch 'feature/*'
 			}
 			steps {
 				script {
