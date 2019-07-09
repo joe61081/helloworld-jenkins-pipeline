@@ -8,12 +8,8 @@ pipeline {
 	}
 
 	stages {
-		stage('Setup'){
-			steps{
-				checkout([$class: 'GitSCM', branches: [[name: '*/master'], [name: '*/develop'], [name: 'feature/*'], [name: 'release/*']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'joe-github-ssh-token', url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git']]])
-			}
-		}
 		stage('Deploy') {
+			checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'joe-github-ssh-token', url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git']]])
 			when{
 				expression {env.GIT_BRANCH == 'origin/master'}
 			}
@@ -27,6 +23,8 @@ pipeline {
 			}
 		}
 		stage('Release') {
+			checkout([$class: 'GitSCM', branches: [[name: 'develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'joe-github-ssh-token', url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git']]])
+
 			when{
 				expression {env.GIT_BRANCH == 'origin/develop'}
 			}
@@ -40,6 +38,8 @@ pipeline {
 			}
 		}
 		stage('Feature') {
+			checkout([$class: 'GitSCM', branches: [[name: 'feature*']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'joe-github-ssh-token', url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git']]])
+
 			when{
 				expression {env.GIT_BRANCH == 'origin/feature*'}
 			}
