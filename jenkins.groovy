@@ -21,7 +21,6 @@ pipeline {
 				script {
 					sh "echo 'Deploying Master...'"
 					sh 'mvn install'
-					sh 'printenv'
 
 				}
 
