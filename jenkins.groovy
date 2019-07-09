@@ -16,7 +16,7 @@ pipeline {
 				script {
 					sh "echo 'Deploying Master...'"
 					sh 'mvn install'
-					sh 'mvn verify'
+					sh 'printenv'
 
 				}
 
@@ -38,13 +38,13 @@ pipeline {
 		}
 		stage('Feature') {
 			when{
-				expression {env.GIT_BRANCH == 'origin/feature*'}
+				branch 'feature*'
 			}
 			steps {
 				script {
 					sh "echo 'Feature...'"
 					sh 'mvn install'
-					sh 'mvn verify'
+					sh 'printenv'
 
 				}
 
