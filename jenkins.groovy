@@ -8,7 +8,7 @@ pipeline {
 	}
 
 	stages {
-		stage(){
+		stage('Setup'){
 			steps{
 				checkout([$class: 'GitSCM', branches: [[name: '**']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'joe-github-ssh-token', url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git']]])
 			}
