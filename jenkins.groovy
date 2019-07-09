@@ -24,7 +24,7 @@ pipeline {
 		}
 		stage('Release') {
 			when{
-				expression {env.GIT_BRANCH == 'origin/release*'}
+				expression {env.GIT_BRANCH == 'origin/develop'}
 			}
 			steps {
 				script {
