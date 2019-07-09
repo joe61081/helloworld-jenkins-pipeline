@@ -38,7 +38,7 @@ pipeline {
 		}
 		stage('Feature') {
 			when{
-				branch 'feature*'
+				branch '^feature'
 			}
 			steps {
 				script {
