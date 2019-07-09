@@ -1,7 +1,8 @@
 pipeline {
 	agent {
-		node { label 'docker-slave-cluster' }
+		node { label 'docker-slave-cluster'
 		checkout([$class: 'GitSCM', branches: [[name: '**']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'joe-github-ssh-token', url: 'git@github.com:joe61081/helloworld-jenkins-pipeline.git']]])
+		}
 	}
 	options { buildDiscarder(logRotator(numToKeepStr: '2', artifactNumToKeepStr: '2')) }
 	triggers {
