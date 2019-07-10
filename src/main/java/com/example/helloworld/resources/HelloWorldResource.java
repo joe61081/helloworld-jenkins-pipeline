@@ -29,6 +29,7 @@ public class HelloWorldResource {
     public Saying sayHello(@QueryParam("name") Optional<String> name) {
         final String value = String.format(template, name.or(defaultName));
         //add feature
+        //release
         return new Saying(counter.incrementAndGet(), value);
     }
 }
