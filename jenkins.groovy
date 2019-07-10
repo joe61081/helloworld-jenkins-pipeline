@@ -15,7 +15,7 @@ pipeline {
 			steps {
 				script {
 					sh "echo 'Deploying Master...'"
-					sh 'mvn install'
+					sh 'mvn clean verify'
 
 				}
 
@@ -28,7 +28,7 @@ pipeline {
 			steps {
 				script {
 					sh "echo 'Release...'"
-					sh 'mvn install'
+					sh 'mvn clean verify'
 
 				}
 
@@ -41,7 +41,7 @@ pipeline {
 			steps {
 				script {
 					sh "echo 'Feature...'"
-					sh 'mvn install'
+					sh 'mvn clean verify'
 
 				}
 
@@ -54,7 +54,7 @@ pipeline {
 			steps {
 				script {
 					sh "echo 'Develop...'"
-					sh 'mvn install'
+					sh 'mvn clean verify'
 
 				}
 
@@ -67,7 +67,7 @@ pipeline {
 			steps {
 				script {
 					sh "echo 'SIT...'"
-					sh 'mvn install'
+					sh 'mvn clean verify'
 				}
 
 			}
@@ -79,7 +79,7 @@ pipeline {
 			steps {
 				script {
 					sh "echo 'UAT...'"
-					sh 'mvn install'
+					sh 'mvn clean verify'
 
 				}
 
@@ -92,7 +92,7 @@ pipeline {
 			steps {
 				script {
 					sh "echo 'PRE...'"
-					sh 'mvn install'
+					sh 'mvn clean verify'
 
 				}
 
@@ -105,7 +105,7 @@ pipeline {
 			steps {
 				script {
 					sh "echo 'PRD...'"
-					sh 'mvn install'
+					sh 'mvn clean verify'
 
 				}
 
