@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-public class HelloWorldApiTests {
+public class HelloWorldApiTest {
 
     @Test
     public void sayHelloTest(){
