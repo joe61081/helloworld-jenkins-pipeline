@@ -16,7 +16,6 @@ pipeline {
 				script {
 					sh "echo 'Deploying Master...'"
 					sh 'mvn install'
-					sh 'mvn test'
 
 				}
 
